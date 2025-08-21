@@ -66,6 +66,7 @@ const ApplicationDetails = ({ applicationId, open, onClose, onUpdate }: Applicat
       const data = await response.json();
       
       if (response.ok) {
+        console.log('Application data received:', data.application);
         setApplication(data.application);
       } else {
         toast({
@@ -231,11 +232,11 @@ const ApplicationDetails = ({ applicationId, open, onClose, onUpdate }: Applicat
               </div>
               <div>
                 <label className="text-sm font-medium text-muted-foreground">Gender</label>
-                <p className="font-medium capitalize">{application.gender}</p>
+                <p className="font-medium capitalize">{application.gender || 'Not specified'}</p>
               </div>
               <div>
                 <label className="text-sm font-medium text-muted-foreground">Occupation</label>
-                <p className="font-medium">{application.occupation}</p>
+                <p className="font-medium">{application.occupation || 'Not specified'}</p>
               </div>
               <div>
                 <label className="text-sm font-medium text-muted-foreground">Father's Name</label>
@@ -271,35 +272,35 @@ const ApplicationDetails = ({ applicationId, open, onClose, onUpdate }: Applicat
             <CardContent className="grid grid-cols-2 gap-4">
               <div>
                 <label className="text-sm font-medium text-muted-foreground">District of Birth</label>
-                <p className="font-medium">{application.district_of_birth}</p>
+                <p className="font-medium">{application.district_of_birth || 'Not specified'}</p>
               </div>
               <div>
                 <label className="text-sm font-medium text-muted-foreground">Tribe</label>
-                <p className="font-medium">{application.tribe}</p>
+                <p className="font-medium">{application.tribe || 'Not specified'}</p>
               </div>
               <div>
                 <label className="text-sm font-medium text-muted-foreground">Home District</label>
-                <p className="font-medium">{application.home_district}</p>
+                <p className="font-medium">{application.home_district || 'Not specified'}</p>
               </div>
               <div>
                 <label className="text-sm font-medium text-muted-foreground">Division</label>
-                <p className="font-medium">{application.division}</p>
+                <p className="font-medium">{application.division || 'Not specified'}</p>
               </div>
               <div>
                 <label className="text-sm font-medium text-muted-foreground">Constituency</label>
-                <p className="font-medium">{application.constituency}</p>
+                <p className="font-medium">{application.constituency || 'Not specified'}</p>
               </div>
               <div>
                 <label className="text-sm font-medium text-muted-foreground">Location</label>
-                <p className="font-medium">{application.location}</p>
+                <p className="font-medium">{application.location || 'Not specified'}</p>
               </div>
               <div>
                 <label className="text-sm font-medium text-muted-foreground">Sub-Location</label>
-                <p className="font-medium">{application.sub_location}</p>
+                <p className="font-medium">{application.sub_location || 'Not specified'}</p>
               </div>
               <div>
                 <label className="text-sm font-medium text-muted-foreground">Village/Estate</label>
-                <p className="font-medium">{application.village_estate}</p>
+                <p className="font-medium">{application.village_estate || 'Not specified'}</p>
               </div>
             </CardContent>
           </Card>
