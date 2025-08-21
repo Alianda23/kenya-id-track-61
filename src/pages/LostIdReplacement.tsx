@@ -19,6 +19,13 @@ interface LostIdDetails {
   father_name: string;
   mother_name: string;
   home_district: string;
+  gender: string;
+  district_of_birth: string;
+  division: string;
+  location: string;
+  sub_location: string;
+  tribe: string;
+  village_estate: string;
 }
 
 const LostIdReplacement = () => {
@@ -118,11 +125,20 @@ const LostIdReplacement = () => {
       formData.append('ob_number', obNumber);
       formData.append('renewal_reason', 'lost');
       formData.append('application_type', 'renewal');
+      
+      // Include all existing data from the original ID
       formData.append('full_names', idDetails.full_names);
       formData.append('date_of_birth', idDetails.date_of_birth);
+      formData.append('gender', idDetails.gender || '');
+      formData.append('district_of_birth', idDetails.district_of_birth || '');
       formData.append('father_name', idDetails.father_name);
       formData.append('mother_name', idDetails.mother_name);
       formData.append('home_district', idDetails.home_district);
+      formData.append('division', idDetails.division || '');
+      formData.append('location', idDetails.location || '');
+      formData.append('sub_location', idDetails.sub_location || '');
+      formData.append('tribe', idDetails.tribe || '');
+      formData.append('village_estate', idDetails.village_estate || '');
       formData.append('constituency', constituency);
       
       // Append files
@@ -231,7 +247,7 @@ const LostIdReplacement = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
                   <Label>Full Names</Label>
                   <p className="text-sm font-medium">{idDetails.full_names}</p>
@@ -245,6 +261,30 @@ const LostIdReplacement = () => {
                   <p className="text-sm font-medium">{new Date(idDetails.date_of_birth).toLocaleDateString()}</p>
                 </div>
                 <div>
+                  <Label>Gender</Label>
+                  <p className="text-sm font-medium">{idDetails.gender || 'N/A'}</p>
+                </div>
+                <div>
+                  <Label>District of Birth</Label>
+                  <p className="text-sm font-medium">{idDetails.district_of_birth || 'N/A'}</p>
+                </div>
+                <div>
+                  <Label>Home District</Label>
+                  <p className="text-sm font-medium">{idDetails.home_district}</p>
+                </div>
+                <div>
+                  <Label>Division</Label>
+                  <p className="text-sm font-medium">{idDetails.division || 'N/A'}</p>
+                </div>
+                <div>
+                  <Label>Location</Label>
+                  <p className="text-sm font-medium">{idDetails.location || 'N/A'}</p>
+                </div>
+                <div>
+                  <Label>Sub-Location</Label>
+                  <p className="text-sm font-medium">{idDetails.sub_location || 'N/A'}</p>
+                </div>
+                <div>
                   <Label>Father's Name</Label>
                   <p className="text-sm font-medium">{idDetails.father_name}</p>
                 </div>
@@ -253,8 +293,8 @@ const LostIdReplacement = () => {
                   <p className="text-sm font-medium">{idDetails.mother_name}</p>
                 </div>
                 <div>
-                  <Label>Home District</Label>
-                  <p className="text-sm font-medium">{idDetails.home_district}</p>
+                  <Label>Tribe</Label>
+                  <p className="text-sm font-medium">{idDetails.tribe || 'N/A'}</p>
                 </div>
               </div>
             </CardContent>
