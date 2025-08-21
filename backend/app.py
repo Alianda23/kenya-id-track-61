@@ -885,8 +885,10 @@ def search_application_by_id(id_number):
         cursor = conn.cursor(dictionary=True)
         
         cursor.execute("""
-            SELECT id, application_number, full_names, date_of_birth, 
-                   generated_id_number, status, father_name, mother_name, home_district
+            SELECT id, application_number, full_names, date_of_birth, gender,
+                   generated_id_number, status, father_name, mother_name, 
+                   home_district, district_of_birth, division, constituency,
+                   location, sub_location, tribe, village_estate
             FROM applications 
             WHERE generated_id_number = %s AND status IN ('approved', 'dispatched', 'ready_for_collection', 'collected')
         """, (id_number,))
